@@ -1,4 +1,4 @@
 package be.heh.epm.application;
 
-interface PaymentMethod {
+public interface PaymentMethod {
 }

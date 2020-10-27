@@ -1,5 +1,6 @@
 package be.heh.epm.domain;
 
+import be.heh.epm.application.*;
 import org.junit.Before;
 import org.junit.Test;
 
