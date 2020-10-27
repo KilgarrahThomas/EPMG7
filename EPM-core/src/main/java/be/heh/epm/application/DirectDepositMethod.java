@@ -18,6 +18,6 @@ public class DirectDepositMethod implements PaymentMethod {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "direct deposit into " + this.bank + " : " + this.account;
     }
 }

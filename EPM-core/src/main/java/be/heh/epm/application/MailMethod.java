@@ -16,6 +16,6 @@ public class MailMethod implements PaymentMethod {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "mail : " + this.mail;
     }
 }
