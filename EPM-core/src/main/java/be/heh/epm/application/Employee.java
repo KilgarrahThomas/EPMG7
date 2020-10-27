@@ -8,15 +8,17 @@ public class Employee {
     private int EmpID;
     private String name;
     private String address;
+    private String mail;
     private PaymentMethod transaction;
     private PaymentSchedule payDay;
     private PaymentClassification payClassification;
 
     // CONSTRUCTOR
-    public Employee(int id, String name, String address) {
+    public Employee(int id, String name, String address, String mail) {
         this.EmpID = id;
         this.name = name;
         this.address = address;
+        this.mail = mail;
     }
 
     // GETTERS & SETTERS
@@ -42,6 +44,10 @@ public class Employee {
 
     public void setPayClassification(PaymentClassification payClassification) {
         this.payClassification = payClassification;
+    }
+
+    public String getMail() {
+        return mail;
     }
 
     // METHODS
