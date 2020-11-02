@@ -13,6 +13,17 @@ public class MonthlyPaymentSchedule implements PaymentSchedule {
 
     @Override
     public boolean IsDatePay(LocalDate date) {
-        return (date.getDayOfMonth() == date.lengthOfMonth());
+        boolean flag = false;
+        if ((date.getDayOfMonth() == date.lengthOfMonth()) && (date.getDayOfWeek().getValue() < 6)) {
+            flag = true;
+        }
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-1)) && (date.getDayOfWeek().getValue() < 6)) {
+            flag = true;
+        }
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-2)) && (date.getDayOfWeek().getValue() < 6)) {
+            flag = true;
+        }
+
+        return flag;
     }
 }

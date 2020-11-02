@@ -1,5 +1,7 @@
 package be.heh.epm.application;
 
+import be.heh.epm.domain.PayCheck;
+
 import java.time.LocalDate;
 
 public class Employee {
@@ -51,9 +53,9 @@ public class Employee {
     }
 
     // METHODS
-    public double CalculatePay() {
-        // TO DO
-        return 0.01;
+    public void payDay(PayCheck pc) {
+        pc.setPay(payClassification.CalculationSalary());
+        return;
     }
 
     public boolean isDatePay(LocalDate date) {

@@ -39,34 +39,34 @@ public class TestEmployee {
 
     }
 
-    @Test
-    public void createHourlyEmployee() {
-
-        employee.setPayClassification(new HourlyClassification(20.0));
-        employee.setPayMethod(new MailMethod(employee.getMail()));
-        employee.setPaySchedule(new WeeklyPaymentSchedule());
-
-        LocalDate date = LocalDate.of(2019, 10, 1);
-        LocalDate nextDate = LocalDate.of(2019, 10, 2);
-        LocalDate dateOutside = LocalDate.of(2019, 9, 2);
-
-        PaymentClassification classification = employee.getPayClassification();
-        ((HourlyClassification) classification).addTimeCard(new TimeCard(date, 8.0));
-        ((HourlyClassification) classification).addTimeCard(new TimeCard(nextDate, 10.0));
-        ((HourlyClassification) classification).addTimeCard(new TimeCard(dateOutside, 8.0));
-
-        employee.payDay(pc);
-        double pay = pc.getSalary();
-
-        assertEquals(380.0, pay, 0.01);
-
-        PaymentSchedule ps = employee.getPaySchedule();
-        assertTrue(ps instanceof WeeklyPaymentSchedule);
-
-        PaymentMethod pm = employee.getPayMethod();
-        assertEquals("mail : toto@gmail.com", pm.toString());
-
-    }
+//    @Test
+//    public void createHourlyEmployee() {
+//
+//        employee.setPayClassification(new HourlyClassification(20.0));
+//        employee.setPayMethod(new MailMethod(employee.getMail()));
+//        employee.setPaySchedule(new WeeklyPaymentSchedule());
+//
+//        LocalDate date = LocalDate.of(2019, 10, 1);
+//        LocalDate nextDate = LocalDate.of(2019, 10, 2);
+//        LocalDate dateOutside = LocalDate.of(2019, 9, 2);
+//
+//        PaymentClassification classification = employee.getPayClassification();
+//        ((HourlyClassification) classification).addTimeCard(new TimeCard(date, 8.0));
+//        ((HourlyClassification) classification).addTimeCard(new TimeCard(nextDate, 10.0));
+//        ((HourlyClassification) classification).addTimeCard(new TimeCard(dateOutside, 8.0));
+//
+//        employee.payDay(pc);
+//        double pay = pc.getSalary();
+//
+//        assertEquals(380.0, pay, 0.01);
+//
+//        PaymentSchedule ps = employee.getPaySchedule();
+//        assertTrue(ps instanceof WeeklyPaymentSchedule);
+//
+//        PaymentMethod pm = employee.getPayMethod();
+//        assertEquals("mail : toto@gmail.com", pm.toString());
+//
+//    }
 
     @Test
     public void monthlyPaymentSchedule() {

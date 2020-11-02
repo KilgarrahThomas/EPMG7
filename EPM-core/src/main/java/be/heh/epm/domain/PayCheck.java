@@ -1,21 +1,25 @@
 package be.heh.epm.domain;
 
-//import lombok.Getter;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PayCheck {
 
- //   @Getter
     private LocalDate date;
- //   @Getter
     private double salary;
     private Map<String, String> fields = new HashMap<String, String>();
 
     public PayCheck(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public double getSalary() {
+        return salary;
     }
 
     public void setPay(double salary) {
