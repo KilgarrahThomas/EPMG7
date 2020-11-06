@@ -20,25 +20,25 @@ public class TestEmployee {
         pc = new PayCheck(payDate);
     }
 
-    @Test
-    public void createSalariedEmployee() {
-
-        employee.setPayClassification(new SalariedClassification(1000));
-        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
-        employee.setPaySchedule(new MonthlyPaymentSchedule());
-
-        employee.payDay(pc);
-        double pay = pc.getSalary();
-        assertEquals(1000.0, pay, 0.01);
-
-        PaymentSchedule ps = employee.getPaySchedule();
-        assertTrue(ps instanceof MonthlyPaymentSchedule);
-
-        PaymentMethod pm = employee.getPayMethod();
-        assertEquals("direct deposit into ING : be80-4444-444", pm.toString());
-
-    }
-
+//    @Test
+//    public void createSalariedEmployee() {
+//
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new MonthlyPaymentSchedule());
+//
+//        employee.payDay(pc);
+//        double pay = pc.getSalary();
+//        assertEquals(1000.0, pay, 0.01);
+//
+//        PaymentSchedule ps = employee.getPaySchedule();
+//        assertTrue(ps instanceof MonthlyPaymentSchedule);
+//
+//        PaymentMethod pm = employee.getPayMethod();
+//        assertEquals("direct deposit into ING : be80-4444-444", pm.toString());
+//
+//    }
+//
 //    @Test
 //    public void createHourlyEmployee() {
 //
@@ -67,52 +67,124 @@ public class TestEmployee {
 //        assertEquals("mail : toto@gmail.com", pm.toString());
 //
 //    }
+//
+//    @Test
+//    public void monthlyPaymentSchedule() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new MonthlyPaymentSchedule());
+//
+//        LocalDate LastDayOfMonth = LocalDate.of(2019, 10, 31);
+//
+//        assertTrue(employee.isDatePay(LastDayOfMonth));
+//
+//    }
+//
+//    @Test
+//    public void monthlyPaymentScheduleWrong() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new MonthlyPaymentSchedule());
+//
+//        LocalDate firstDayOfMonthWrong = LocalDate.of(2019, 10, 1);
+//
+//        assertFalse(employee.isDatePay(firstDayOfMonthWrong));
+//
+//    }
+//
+//    @Test
+//    public void weeklyPaymentSchedule() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new WeeklyPaymentSchedule());
+//
+//        LocalDate fridayDate = LocalDate.of(2020, 10, 2);
+//
+//        assertTrue(employee.isDatePay(fridayDate));
+//
+//    }
+//
+//    @Test
+//    public void weeklyPaymentScheduleWrong() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new WeeklyPaymentSchedule());
+//
+//        LocalDate MondayDate = LocalDate.of(2020, 10, 5);
+//
+//        assertFalse(employee.isDatePay(MondayDate));
+//
+//    }
+//
+//    @Test
+//    public void TwoWeeksPaymentSchedule() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new TwoWeeksPayementSchedule());
+//
+//        LocalDate SecondFriday = LocalDate.of(2020, 10, 9);
+//
+//        assertTrue(employee.isDatePay(SecondFriday));
+//
+//    }
+//
+//    @Test
+//    public void TwoWeeksPaymentScheduleWrong() {
+//        employee.setPayClassification(new SalariedClassification(1000));
+//        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
+//        employee.setPaySchedule(new TwoWeeksPayementSchedule());
+//
+//        LocalDate FirstFriday = LocalDate.of(2020, 10, 2);
+//
+//        assertFalse(employee.isDatePay(FirstFriday));
+//
+//    }
 
     @Test
-    public void monthlyPaymentSchedule() {
+    public void TwoWeeksPaymentScheduleMondayWeek4() {
         employee.setPayClassification(new SalariedClassification(1000));
         employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
-        employee.setPaySchedule(new MonthlyPaymentSchedule());
+        employee.setPaySchedule(new TwoWeeksPayementSchedule());
 
-        LocalDate LastDayOfMonth = LocalDate.of(2019, 10, 31);
+        LocalDate SecondFriday = LocalDate.of(2020, 10, 23);
+        LocalDate Start = LocalDate.of(2020, 10, 12);
+        PayCheck pc2 = new PayCheck(SecondFriday);
 
-        assertTrue(employee.isDatePay(LastDayOfMonth));
+        employee.payDay(pc2);
+
+        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
 
     }
 
     @Test
-    public void monthlyPaymentScheduleWrong() {
+    public void TwoWeeksPaymentScheduleMondayWeek2() {
         employee.setPayClassification(new SalariedClassification(1000));
         employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
-        employee.setPaySchedule(new MonthlyPaymentSchedule());
+        employee.setPaySchedule(new TwoWeeksPayementSchedule());
 
-        LocalDate firstDayOfMonthWrong = LocalDate.of(2019, 10, 1);
+        LocalDate SecondFriday = LocalDate.of(2020, 10, 9);
+        LocalDate Start = LocalDate.of(2020, 9, 28);
+        PayCheck pc2 = new PayCheck(SecondFriday);
 
-        assertFalse(employee.isDatePay(firstDayOfMonthWrong));
+        employee.payDay(pc2);
+
+        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
 
     }
 
     @Test
-    public void weeklyPaymentSchedule() {
+    public void ThreeWeeksPaymentScheduleMonday() {
         employee.setPayClassification(new SalariedClassification(1000));
         employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
-        employee.setPaySchedule(new WeeklyPaymentSchedule());
+        employee.setPaySchedule(new TwoWeeksPayementSchedule());
 
-        LocalDate fridayDate = LocalDate.of(2020, 10, 2);
+        LocalDate SecondFriday = LocalDate.of(2020, 8, 14);
+        LocalDate Start = LocalDate.of(2020, 7, 27);
+        PayCheck pc2 = new PayCheck(SecondFriday);
 
-        assertTrue(employee.isDatePay(fridayDate));
+        employee.payDay(pc2);
 
-    }
-
-    @Test
-    public void weeklyPaymentScheduleWrong() {
-        employee.setPayClassification(new SalariedClassification(1000));
-        employee.setPayMethod(new DirectDepositMethod("ING", "be80-4444-444"));
-        employee.setPaySchedule(new WeeklyPaymentSchedule());
-
-        LocalDate MondayDate = LocalDate.of(2020, 10, 5);
-
-        assertFalse(employee.isDatePay(MondayDate));
+        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
 
     }
 }

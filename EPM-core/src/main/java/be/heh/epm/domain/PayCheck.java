@@ -7,6 +7,7 @@ import java.util.Map;
 public class PayCheck {
 
     private LocalDate date;
+    private LocalDate PayPayPeriodStart;
     private double salary;
     private Map<String, String> fields = new HashMap<String, String>();
 
@@ -16,6 +17,14 @@ public class PayCheck {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public void setPayPayPeriodStart(LocalDate payPayPeriodStart) {
+        PayPayPeriodStart = payPayPeriodStart;
+    }
+
+    public LocalDate getPayPayPeriodStart() {
+        return PayPayPeriodStart;
     }
 
     public double getSalary() {

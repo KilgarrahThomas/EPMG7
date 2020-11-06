@@ -13,17 +13,26 @@ public class MonthlyPaymentSchedule implements PaymentSchedule {
 
     @Override
     public boolean IsDatePay(LocalDate date) {
+//        Renvoie True selon 3 coffiguration possible
+//        Si le dernier jour du mois est ouvrable
+//        Ou si l'avant dernier jour est un vendredi
+//        Ou si l'avant-avant dernier jour etst un vendredi
         boolean flag = false;
         if ((date.getDayOfMonth() == date.lengthOfMonth()) && (date.getDayOfWeek().getValue() < 6)) {
             flag = true;
         }
-        else if((date.getDayOfMonth() == (date.lengthOfMonth()-1)) && (date.getDayOfWeek().getValue() < 6)) {
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-1)) && (date.getDayOfWeek().getValue() == 5)) {
             flag = true;
         }
-        else if((date.getDayOfMonth() == (date.lengthOfMonth()-2)) && (date.getDayOfWeek().getValue() < 6)) {
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-2)) && (date.getDayOfWeek().getValue() == 5)) {
             flag = true;
         }
 
         return flag;
+    }
+
+    @Override
+    public LocalDate GetStartPayPeriod(LocalDate dateEnd) {
+        return dateEnd.withDayOfMonth(1); //Renvoie le premier jour du mois
     }
 }

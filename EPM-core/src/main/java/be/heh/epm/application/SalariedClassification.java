@@ -1,5 +1,7 @@
 package be.heh.epm.application;
 
+import be.heh.epm.domain.PayCheck;
+
 public class SalariedClassification implements PaymentClassification {
     // ATTRIBUTES
     private double salary;
@@ -15,7 +17,8 @@ public class SalariedClassification implements PaymentClassification {
     // METHODS
 
     @Override
-    public double CalculationSalary() {
-        return this.salary;
+    public void CalculationSalary(PayCheck pc) {
+        pc.setPay(this.salary);
+        return;
     }
 }

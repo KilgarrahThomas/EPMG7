@@ -53,8 +53,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,13 +93,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,6 +146,10 @@
       <workItem from="1603811137017" duration="556000" />
       <workItem from="1603871796497" duration="2703000" />
       <workItem from="1603874859051" duration="3500000" />
+      <workItem from="1604322805555" duration="39000" />
+      <workItem from="1604415843902" duration="92000" />
+      <workItem from="1604415970495" duration="3848000" />
+      <workItem from="1604657789402" duration="11011000" />
     </task>
     <servers />
   </component>
@@ -173,10 +179,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="640" y="191" key="#HTTP_Proxy/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603874963727" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1603875906350">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1604666933248">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603875906350" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1604666933248" />
     <state x="779" y="210" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1602584942493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -189,22 +195,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="640" y="211" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603874950129" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1603878601086">
+    <state width="1493" height="259" key="GridCell.Tab.0.bottom" timestamp="1604670325567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603878601086" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1603878601086">
+    <state width="1493" height="259" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1604670325567" />
+    <state width="1493" height="259" key="GridCell.Tab.0.center" timestamp="1604670325567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603878601086" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1603878601086">
+    <state width="1493" height="259" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1604670325567" />
+    <state width="1493" height="259" key="GridCell.Tab.0.left" timestamp="1604670325567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603878601086" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1603878601086">
+    <state width="1493" height="259" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1604670325567" />
+    <state width="1493" height="259" key="GridCell.Tab.0.right" timestamp="1604670325567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603878601086" />
+    <state width="1493" height="259" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1604670325567" />
     <state x="369" y="115" key="SettingsEditor" timestamp="1603876579574">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
