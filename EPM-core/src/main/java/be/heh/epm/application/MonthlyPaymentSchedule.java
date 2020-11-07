@@ -1,5 +1,6 @@
 package be.heh.epm.application;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class MonthlyPaymentSchedule implements PaymentSchedule {
@@ -18,13 +19,13 @@ public class MonthlyPaymentSchedule implements PaymentSchedule {
 //        Ou si l'avant dernier jour est un vendredi
 //        Ou si l'avant-avant dernier jour etst un vendredi
         boolean flag = false;
-        if ((date.getDayOfMonth() == date.lengthOfMonth()) && (date.getDayOfWeek().getValue() < 6)) {
+        if ((date.getDayOfMonth() == date.lengthOfMonth()) && (date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY)) {
             flag = true;
         }
-        else if((date.getDayOfMonth() == (date.lengthOfMonth()-1)) && (date.getDayOfWeek().getValue() == 5)) {
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-1)) && (date.getDayOfWeek() == DayOfWeek.FRIDAY)) {
             flag = true;
         }
-        else if((date.getDayOfMonth() == (date.lengthOfMonth()-2)) && (date.getDayOfWeek().getValue() == 5)) {
+        else if((date.getDayOfMonth() == (date.lengthOfMonth()-2)) && (date.getDayOfWeek() == DayOfWeek.FRIDAY)) {
             flag = true;
         }
 

@@ -54,8 +54,10 @@ public class Employee {
 
     // METHODS
     public void payDay(PayCheck pc) {
-        pc.setPayPayPeriodStart(payDay.GetStartPayPeriod(pc.getDate()));
-        payClassification.CalculationSalary(pc);
+        if(payDay.IsDatePay(pc.getDate())) {
+            pc.setPayPayPeriodStart(payDay.GetStartPayPeriod(pc.getDate()));
+            payClassification.CalculationSalary(pc);
+        }
         return;
     }
 

@@ -1,5 +1,6 @@
 package be.heh.epm.application;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class WeeklyPaymentSchedule implements PaymentSchedule{
@@ -10,11 +11,10 @@ public class WeeklyPaymentSchedule implements PaymentSchedule{
     // GETTERS & SETTERS
 
     // METHODS
-
     @Override
     public boolean IsDatePay(LocalDate date) {
         // Renvoie vrai si le jour est un vendredi
-        return (date.getDayOfWeek().getValue() == 5);
+        return (date.getDayOfWeek() == DayOfWeek.FRIDAY);
     }
 
     @Override
