@@ -7,17 +7,21 @@ import be.heh.epm.application.employee.Employee;
 import java.time.LocalDate;
 
 public class AddSalesReceipt implements Command {
+
+    // ATTRIBUTES
     int empId;
     LocalDate date;
     double saleAmount;
-    TimeCard tc;
+    SaleReceipt sr;
 
+    // CONSTRUCTOR
     public AddSalesReceipt(int empId, LocalDate date, double saleAmount) {
         this.empId = empId;
         this.date = date;
         this.saleAmount = saleAmount;
     }
 
+    // GETTERS & SETTERS
     public LocalDate getDate() {
         return date;
     }
@@ -26,22 +30,24 @@ public class AddSalesReceipt implements Command {
         return saleAmount;
     }
 
+    // METHODS
     @Override
     public void execute() {
+        // Récupérer l'enmployé
         Employee e = Context.emp.getEmployee(empId);
-        if(e != null) {
-            PaymentClassification pc = e.getPayClassification();
-            if (pc instanceof CommissionClassification) {
+        if(e != null) { // Si l'employé existe...
+            PaymentClassification pc = e.getPayClassification(); // On récupère sa classification
+            if (pc instanceof CommissionClassification) { // S'il touche des commissions
                 CommissionClassification cc = (CommissionClassification) pc;
-                SaleReceipt sr = new SaleReceipt(date, saleAmount);
-                cc.addSaleReceipt(sr);
-                Context.emp.save(e.getEmpID(), e);
+                sr = new SaleReceipt(date, saleAmount); // On crée la reçu de vente
+                cc.addSaleReceipt(sr); // Et on l'ajoute
+                Context.emp.save(e.getEmpID(), e); // Et on envoie pour la sauvegarde
             }
-            else {
+            else { // S'il ne touche pas de commissions
                 throw new IllegalStateException("L'employé n'est pas payé en commission.");
             }
         }
-        else{
+        else{ // Si l'employé n'existe pas
             throw new NullPointerException("Aucun employé correspondant au numéro entré");
         }
     }

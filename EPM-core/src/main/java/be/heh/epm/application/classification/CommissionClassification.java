@@ -30,19 +30,20 @@ public class CommissionClassification implements PaymentClassification {
     // METHODS
 
     private double CalculCommission(SaleReceipt SR){
-
+        // Calcul de la part revenue à l'employée à partir du % défini pour l'employé
         return (this.commission * SR.getSaleAmount())/100;
     }
 
     @Override
     public void CalculationSalary(PayCheck pc) {
-        double totalpay = this.salary;
-        for(SaleReceipt saleReceipt : listSaleReceipt.values()){
-            if(PayPeriod(saleReceipt.getDate(), pc)){
-                totalpay += CalculCommission(saleReceipt);
+        // Calcul du salaire de l'employé
+        double totalpay = this.salary; // On pose le salaire de base
+        for(SaleReceipt saleReceipt : listSaleReceipt.values()){ // On boucle sur tous ses reçus de ventes
+            if(PayPeriod(saleReceipt.getDate(), pc)){ // Si le reçu se trouve dans la période précédent la date de payement
+                totalpay += CalculCommission(saleReceipt); // On calcule la part de l'employé et on l'ajoute au total
             }
         }
-        pc.setPay(totalpay);
+        pc.setPay(totalpay); // On envoie le total de sa paie.
         return;
     }
 }

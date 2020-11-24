@@ -18,7 +18,7 @@ public class SalariedClassification implements PaymentClassification {
 
     @Override
     public void CalculationSalary(PayCheck pc) {
-        pc.setPay(this.salary);
+        pc.setPay(this.salary); // Retourne le salaire défini de l'employé
         return;
     }
 }

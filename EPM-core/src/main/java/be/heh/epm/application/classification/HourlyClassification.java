@@ -26,21 +26,22 @@ public class HourlyClassification implements PaymentClassification {
 
     // METHODS
     private double CalculSalaryTimeCard(TimeCard TC) {
-        double hours = TC.getHours();
-        double overtime = Math.max(0.0, hours-8.0);
-        double straightTime = hours - overtime;
-        return (straightTime + overtime * 1.5) * this.hoursSalary;
+        // Calcul du salaire journalier
+        double hours = TC.getHours(); // On récupère le nombre d'heures prestée
+        double overtime = Math.max(0.0, hours-8.0); // On récupère le nombre d'heures supp, s'il y en a
+        double straightTime = hours - overtime; // Calcul du temps presté, sans les heures supplémentaires
+        return (straightTime + overtime * 1.5) * this.hoursSalary; // On retourne le salaire journalier
     }
 
     @Override
     public void CalculationSalary(PayCheck pc) {
-        double totalpay = 0.0;
-        for(TimeCard timeCard :listTimeCards.values()){
-            if(PayPeriod(timeCard.getDate(),pc)){
-                totalpay += CalculSalaryTimeCard(timeCard);
+        double totalpay = 0.0; // On pose le salaire à 0
+        for(TimeCard timeCard :listTimeCards.values()){ // On récupère les TimeCards de l'employé
+            if(PayPeriod(timeCard.getDate(),pc)){ // Si la TimeCard est dans la période de payement
+                totalpay += CalculSalaryTimeCard(timeCard); // On calcule le salire du jour presté et on l'ajoute au total
             }
         }
-        pc.setPay(totalpay);
+        pc.setPay(totalpay); // On envoie le total de la paie
         return;
     }
 }
