@@ -1,4 +1,4 @@
-package be.heh.epm.domain;
+package be.heh.epm.application.payDay;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ public class PayCheck {
     private LocalDate date;
     private LocalDate PayPayPeriodStart;
     private double salary;
-    private Map<String, String> fields = new HashMap<String, String>();
+    private String method;
 
     public PayCheck(LocalDate date) {
         this.date = date;
@@ -35,12 +35,11 @@ public class PayCheck {
         this.salary = salary;
     }
 
-    public void setField(String field, String value) {
-        fields.put(field, value);
+    public String getMethod() {
+        return method;
     }
 
-    public String getField(String field) {
-        return fields.get(field);
+    public void setMethod(String method) {
+        this.method = method;
     }
-
 }

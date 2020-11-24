@@ -2,6 +2,7 @@ package be.heh.epm.domain;
 
 import be.heh.epm.application.classification.*;
 import be.heh.epm.application.employee.*;
+import be.heh.epm.application.payDay.PayCheck;
 import org.junit.Before;
 import org.junit.Test;
 

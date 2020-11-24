@@ -3,7 +3,7 @@ package be.heh.epm.application.employee;
 import be.heh.epm.application.classification.PaymentClassification;
 import be.heh.epm.application.payMethod.PaymentMethod;
 import be.heh.epm.application.schedule.PaymentSchedule;
-import be.heh.epm.domain.PayCheck;
+import be.heh.epm.application.payDay.PayCheck;
 
 import java.time.LocalDate;
 
@@ -83,6 +83,7 @@ public class Employee {
     public void payDay(PayCheck pc) {
         if(payDay.IsDatePay(pc.getDate())) {
             pc.setPayPayPeriodStart(payDay.GetStartPayPeriod(pc.getDate()));
+            pc.setMethod(this.transaction.toString());
             payClassification.CalculationSalary(pc);
         }
         return;

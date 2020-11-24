@@ -23,4 +23,9 @@ public class InMemoryEmployGateway implements EmployeeGateway {
     public void deleteEmployed(int id) {
         employeeMap.remove(id);
     }
+
+    @Override
+    public Map getAllEmployees() {
+        return employeeMap;
+    }
 }

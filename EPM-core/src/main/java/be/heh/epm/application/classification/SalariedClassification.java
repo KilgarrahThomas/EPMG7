@@ -1,6 +1,6 @@
 package be.heh.epm.application.classification;
 
-import be.heh.epm.domain.PayCheck;
+import be.heh.epm.application.payDay.PayCheck;
 
 public class SalariedClassification implements PaymentClassification {
     // ATTRIBUTES

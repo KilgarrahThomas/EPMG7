@@ -2,7 +2,7 @@ package be.heh.epm.application.classification;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import be.heh.epm.domain.PayCheck;
+import be.heh.epm.application.payDay.PayCheck;
 
 public class HourlyClassification implements PaymentClassification {
     // ATTRIBUTES

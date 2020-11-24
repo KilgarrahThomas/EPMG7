@@ -6,6 +6,7 @@ import be.heh.epm.application.employee.AddSalariedEmployee;
 import be.heh.epm.application.employee.Context;
 import be.heh.epm.application.employee.Employee;
 import be.heh.epm.application.modification.*;
+import be.heh.epm.application.payDay.PayCheck;
 import be.heh.epm.application.payMethod.DirectDepositMethod;
 import be.heh.epm.application.payMethod.MailMethod;
 import be.heh.epm.application.payMethod.PaymentMethod;
