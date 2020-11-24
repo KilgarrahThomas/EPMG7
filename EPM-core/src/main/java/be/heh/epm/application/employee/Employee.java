@@ -81,15 +81,15 @@ public class Employee {
 
     // METHODS
     public void payDay(PayCheck pc) {
-        if(payDay.IsDatePay(pc.getDate())) {
-            pc.setPayPayPeriodStart(payDay.GetStartPayPeriod(pc.getDate()));
-            pc.setMethod(this.transaction.toString());
-            payClassification.CalculationSalary(pc);
+        if(payDay.IsDatePay(pc.getDate())) { // Vérifie si l'employé doit bien être payé en ce jour
+            pc.setPayPayPeriodStart(payDay.GetStartPayPeriod(pc.getDate())); // Défini la date du début de la période de payement
+            pc.setMethod(this.transaction.toString()); // Définit la méthode de payement
+            payClassification.CalculationSalary(pc); // Calcule le salaire reçu par l'employé
         }
         return;
     }
 
     public boolean isDatePay(LocalDate date) {
         return payDay.IsDatePay(date);
-    }
+    } // Retourne true si l'employé doit être payé à la date définie
 }

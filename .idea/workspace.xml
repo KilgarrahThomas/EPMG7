@@ -61,12 +61,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Kilga" pattern="" />
   </component>
   <component name="ProjectId" id="1iorEXs1sylAiwxYaPDBagb5YF1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -85,7 +93,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -234,7 +242,7 @@
       <workItem from="1605015165076" duration="640000" />
       <workItem from="1605543324759" duration="54000" />
       <workItem from="1606118233873" duration="18195000" />
-      <workItem from="1606204774636" duration="7843000" />
+      <workItem from="1606204774636" duration="9949000" />
     </task>
     <servers />
   </component>
@@ -308,10 +316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="279" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1606211596926" />
-    <state x="369" y="115" key="SettingsEditor" timestamp="1603876579574">
+    <state x="369" y="115" key="SettingsEditor" timestamp="1606226008595">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="369" y="115" key="SettingsEditor/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1603876579574" />
+    <state x="369" y="115" key="SettingsEditor/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1606226008595" />
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602584928411" />
     <state x="499" y="173" key="extract.method.dialog" timestamp="1606141158085">
       <screen x="0" y="0" width="1536" height="824" />
