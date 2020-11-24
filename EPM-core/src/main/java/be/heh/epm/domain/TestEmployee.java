@@ -1,6 +1,14 @@
 package be.heh.epm.domain;
 
-import be.heh.epm.application.*;
+import be.heh.epm.application.classification.*;
+import be.heh.epm.application.employee.Employee;
+import be.heh.epm.application.payMethod.DirectDepositMethod;
+import be.heh.epm.application.payMethod.MailMethod;
+import be.heh.epm.application.payMethod.PaymentMethod;
+import be.heh.epm.application.schedule.MonthlyPaymentSchedule;
+import be.heh.epm.application.schedule.PaymentSchedule;
+import be.heh.epm.application.schedule.TwoWeeksPayementSchedule;
+import be.heh.epm.application.schedule.WeeklyPaymentSchedule;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -59,6 +67,35 @@ public class TestEmployee {
         double pay = pc.getSalary();
 
         assertEquals(380.0, pay, 0.01);
+
+        PaymentSchedule ps = employee.getPaySchedule();
+        assertTrue(ps instanceof WeeklyPaymentSchedule);
+
+        PaymentMethod pm = employee.getPayMethod();
+        assertEquals("mail : toto@gmail.com", pm.toString());
+
+    }
+
+    @Test
+    public void createCommissionnedEmployee() {
+
+        employee.setPayClassification(new CommissionClassification(20.0, 20));
+        employee.setPayMethod(new MailMethod(employee.getMail()));
+        employee.setPaySchedule(new WeeklyPaymentSchedule());
+
+        LocalDate date = LocalDate.of(2020, 10, 29);
+        LocalDate nextDate = LocalDate.of(2020, 10, 30);
+        LocalDate dateOutside = LocalDate.of(2020, 9, 2);
+
+        PaymentClassification classification = employee.getPayClassification();
+        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(date, 100));
+        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(nextDate, 200));
+        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(dateOutside, 300));
+
+        employee.payDay(pc);
+        double pay = pc.getSalary();
+
+        assertEquals(80.0, pay, 0.01);
 
         PaymentSchedule ps = employee.getPaySchedule();
         assertTrue(ps instanceof WeeklyPaymentSchedule);
