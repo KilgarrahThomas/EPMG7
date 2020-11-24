@@ -23,6 +23,13 @@ public class Employee {
         this.mail = mail;
     }
 
+    public Employee() {
+
+    }
+
+    public Employee(int idemp, String name, String address) {
+    }
+
     // GETTERS & SETTERS
     public PaymentMethod getPayMethod() {
         return transaction;
@@ -63,5 +70,29 @@ public class Employee {
 
     public boolean isDatePay(LocalDate date) {
         return payDay.IsDatePay(date);
+    }
+
+    public String getEmployeeName() {
+        return this.name;
+    }
+
+    public String getEmployeeAddress() {
+        return this.address;
+    }
+
+    public void setEmployeeId(int idemp) {
+        this.EmpID = idemp;
+    }
+
+    public void setEmployeeName(String name) {
+        this.name = name;
+    }
+
+    public void setEmployeeAddress(String address) {
+        this.address = address;
+    }
+
+    public Object getEmployeeId() {
+        return this.EmpID;
     }
 }
