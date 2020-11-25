@@ -74,18 +74,18 @@ public class DataBaseHelper {
         }
         return emp;
     }
-/*
+
     //Insertion d'employee dans la DB
     public Employee addEmployee(Employee employee) {
         String sql = "INSERT INTO employees(name, address) VALUES (?, ?)";
         try (PreparedStatement ps = this.connection.prepareStatement(sql, new String[] { "idemp" })) {
-            ps.setString(1, employee.getEmployeeName());
-            ps.setString(2, employee.getEmployeeAddress());
+            ps.setString(1, employee.getName());
+            ps.setString(2, employee.getAddress());
             int id = ps.executeUpdate();
             if (id > 0) {
                 try (ResultSet rs = ps.getGeneratedKeys()) {
                     if (rs.next()) {
-                        employee.setEmployeeId(rs.getInt("idemp"));
+                        employee.setEmpId(rs.getInt("idemp"));
                     }
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -96,7 +96,7 @@ public class DataBaseHelper {
         }
         return employee;
     }
-
+/*
     //Deletion d'employee dans la DB
     public void deleteEmployee(int id) {
         String sql = "DELETE FROM employees WHERE idemp=?";
