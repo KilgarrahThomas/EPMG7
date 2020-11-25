@@ -43,7 +43,7 @@ public class DataBaseHelper {
         String sql = "SELECT * FROM employees";
         try (PreparedStatement ps = this.connection.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
-            if(rs.next()==false)
+            if(!rs.next())
                 return null;
             else do{
                 listEmp.add(employee = new Employee(rs.getInt("idemp"), rs.getString("name"), rs.getString("address"), null));
@@ -61,14 +61,12 @@ public class DataBaseHelper {
         try (PreparedStatement ps = this.connection.prepareStatement(sql)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(!rs.next())
-                return null;
-            while (rs.next()) {
-                emp.setEmployeeId(rs.getInt("idemp"));
-                emp.setEmployeeName(rs.getString("name"));
-                emp.setEmployeeAddress(rs.getString("address"));
-            }
-            if (emp.getEmployeeName() == null) {
+            while(rs.next()){
+                emp.setEmpId(rs.getInt("idemp"));
+                emp.setName(rs.getString("name"));
+                emp.setAddress(rs.getString("address"));
+            };
+            if (emp.getName() == null){
                 System.out.println("User not found");
             }
         } catch (Exception e) {

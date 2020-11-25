@@ -31,12 +31,13 @@ public class Employee {
     }
 
     // GETTERS & SETTERS
-    public int getEmpID() {
-        return EmpID;
-    }
+    public void setEmpId(int idemp) { this.EmpID = idemp; }
 
+    public int getEmpID() {
+        return this.EmpID;
+    }
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -44,7 +45,7 @@ public class Employee {
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
@@ -58,7 +59,6 @@ public class Employee {
     public void setPayMethod(PaymentMethod transaction) {
         this.transaction = transaction;
     }
-
     public PaymentSchedule getPaySchedule() {
         return payDay;
     }
@@ -76,7 +76,7 @@ public class Employee {
     }
 
     public String getMail() {
-        return mail;
+        return this.mail;
     }
 
     public void setMail(String mail) {
@@ -97,27 +97,4 @@ public class Employee {
         return payDay.IsDatePay(date);
     } // Retourne true si l'employé doit être payé à la date définie
 
-    public String getEmployeeName() {
-        return this.name;
-    }
-
-    public String getEmployeeAddress() {
-        return this.address;
-    }
-
-    public void setEmployeeId(int idemp) {
-        this.EmpID = idemp;
-    }
-
-    public void setEmployeeName(String name) {
-        this.name = name;
-    }
-
-    public void setEmployeeAddress(String address) {
-        this.address = address;
-    }
-
-    public Object getEmployeeId() {
-        return this.EmpID;
-    }
 }
