@@ -1,6 +1,18 @@
 package be.heh.epm.domain;
 
 import be.heh.epm.application.*;
+import be.heh.epm.application.classification.HourlyClassification;
+import be.heh.epm.application.classification.PaymentClassification;
+import be.heh.epm.application.classification.SalariedClassification;
+import be.heh.epm.application.classification.TimeCard;
+import be.heh.epm.application.employee.Employee;
+import be.heh.epm.application.payMethod.DirectDepositMethod;
+import be.heh.epm.application.payMethod.MailMethod;
+import be.heh.epm.application.payMethod.PaymentMethod;
+import be.heh.epm.application.schedule.MonthlyPaymentSchedule;
+import be.heh.epm.application.schedule.PaymentSchedule;
+import be.heh.epm.application.schedule.TwoWeeksPayementSchedule;
+import be.heh.epm.application.schedule.WeeklyPaymentSchedule;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,13 +23,13 @@ import static org.junit.Assert.*;
 public class TestEmployee {
 
     private Employee employee;
-    private PayCheck pc;
+    private be.heh.epm.application.payDay.PayCheck pc;
 
     @Before
     public void setUp() throws Exception {
         employee = new Employee(100, "toto", "av maistriau", "toto@gmail.com");
         LocalDate payDate = LocalDate.of(2020, 10, 30);
-        pc = new PayCheck(payDate);
+        pc = new be.heh.epm.application.payDay.PayCheck(payDate);
     }
 
     @Test
@@ -172,11 +184,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 10, 23);
         LocalDate Start = LocalDate.of(2020, 10, 12);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 
@@ -188,11 +200,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 10, 9);
         LocalDate Start = LocalDate.of(2020, 9, 28);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 
@@ -204,11 +216,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 8, 14);
         LocalDate Start = LocalDate.of(2020, 7, 27);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 }

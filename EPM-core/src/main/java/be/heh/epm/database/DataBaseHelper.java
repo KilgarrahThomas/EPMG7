@@ -1,22 +1,23 @@
 package be.heh.epm.database;
 
-import be.heh.epm.application.Employee;
+import be.heh.epm.application.employee.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DataBaseHelper {
 
-    private String url = "jdbc:postgresql://127.0.0.1:5432/postgres";
+    //Preparation de la DB
+    private String url = "jdbc:postgresql://127.0.0.1:5432/epm";
     private String user = "postgres";
     private String password = "root";
     private Connection connection = null;
     private Statement stmt;
 
+    //Connection
     public DataBaseHelper() {
         Connect();
     }
-
     private Connection Connect() {
         try {
             this.connection = DriverManager.getConnection(this.url, this.user, this.password);
@@ -35,38 +36,25 @@ public class DataBaseHelper {
         return this.connection;
     }
 
-    public Employee addEmployee(Employee employee) {
-        String sql = "INSERT INTO employees(name, address) VALUES (?, ?)";
-        try (PreparedStatement ps = this.connection.prepareStatement(sql, new String[] { "idemp" })) {
-            ps.setString(1, employee.getEmployeeName());
-            ps.setString(2, employee.getEmployeeAddress());
-            int id = ps.executeUpdate();
-            if (id > 0) {
-                try (ResultSet rs = ps.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        employee.setEmployeeId(rs.getInt("idemp"));
-                    }
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return employee;
-    }
-
-    public void deleteEmployee(int id) {
-        String sql = "DELETE FROM employees WHERE idemp=?";
+    //Retourne tout les employee de la DB
+    public ArrayList getEmployees() {
+        Employee employee = null;
+        ArrayList<Employee> listEmp = new ArrayList<>();
+        String sql = "SELECT * FROM employees";
         try (PreparedStatement ps = this.connection.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            System.out.println("Employee " + getEmployee(id).getEmployeeName() + " deleted");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()==false)
+                return null;
+            else do{
+                listEmp.add(employee = new Employee(rs.getInt("idemp"), rs.getString("name"), rs.getString("address"), null));
+            }while(rs.next());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return listEmp;
     }
 
+    //Retourne un employee de la DB
     public Employee getEmployee(int id) {
         String sql = "SELECT * FROM employees WHERE idemp=?";
         Employee emp = new Employee();
@@ -88,22 +76,39 @@ public class DataBaseHelper {
         }
         return emp;
     }
+/*
+    //Insertion d'employee dans la DB
+    public Employee addEmployee(Employee employee) {
+        String sql = "INSERT INTO employees(name, address) VALUES (?, ?)";
+        try (PreparedStatement ps = this.connection.prepareStatement(sql, new String[] { "idemp" })) {
+            ps.setString(1, employee.getEmployeeName());
+            ps.setString(2, employee.getEmployeeAddress());
+            int id = ps.executeUpdate();
+            if (id > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        employee.setEmployeeId(rs.getInt("idemp"));
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return employee;
+    }
 
-    public ArrayList getEmployees() {
-        Employee employee = null;
-        ArrayList<Employee> listEmp = new ArrayList<>();
-        String sql = "SELECT * FROM employees";
+    //Deletion d'employee dans la DB
+    public void deleteEmployee(int id) {
+        String sql = "DELETE FROM employees WHERE idemp=?";
         try (PreparedStatement ps = this.connection.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()==false)
-                return null;
-            else do{
-                listEmp.add(employee = new Employee(rs.getInt("idemp"), rs.getString("name"), rs.getString("address")));
-            }while(rs.next());
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Employee " + getEmployee(id).getEmployeeName() + " deleted");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return listEmp;
-    }
+    }*/
 
 }
