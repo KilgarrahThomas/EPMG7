@@ -26,8 +26,12 @@ public class Employee {
         this.mail = mail;
     }
 
+    //Constructeur utiliser par la DB
+    public Employee(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
     public Employee() {
-
     }
 
     // GETTERS & SETTERS

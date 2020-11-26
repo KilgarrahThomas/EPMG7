@@ -26,8 +26,7 @@ public class DataBaseHelper {
             String sql = "CREATE TABLE employees " +
                     "(idemp SERIAL PRIMARY KEY ," +
                     " name           TEXT    NOT NULL UNIQUE, " +
-                    " address        CHAR(50), " +
-                    " salary         REAL)";
+                    " address        CHAR(50))"; //Crée la table Employees avec les collones et parametres spécifié.
             stmt.executeUpdate(sql);
             stmt.close();
         } catch (SQLException e) {
@@ -54,7 +53,7 @@ public class DataBaseHelper {
         return listEmp;
     }
 
-    //Retourne un employee de la DB
+    //Retourne un employee spécifique de la DB
     public Employee getEmployee(int id) {
         String sql = "SELECT * FROM employees WHERE idemp=?";
         Employee emp = new Employee();
@@ -96,17 +95,16 @@ public class DataBaseHelper {
         }
         return employee;
     }
-/*
+
     //Deletion d'employee dans la DB
     public void deleteEmployee(int id) {
         String sql = "DELETE FROM employees WHERE idemp=?";
         try (PreparedStatement ps = this.connection.prepareStatement(sql)) {
             ps.setInt(1, id);
             ps.executeUpdate();
-            System.out.println("Employee " + getEmployee(id).getEmployeeName() + " deleted");
+            System.out.println("Employee " + getEmployee(id).getName() + " deleted");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }*/
-
+    }
 }
