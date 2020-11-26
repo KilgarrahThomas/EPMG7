@@ -37,11 +37,10 @@ public class Controller {
         db.addEmployee(requestedEmployee);
         return ResponseEntity.ok(requestedEmployee.getName());
     }
-/* // Pas fonctionelle actuellement
-    @DeleteMapping("/api/employee/delete") //API delete Employee: prend un json en requestbody pour supprimer un employe dans la db
-    public ResponseEntity deleteClient(@RequestBody Employee requestedEmployee) {
-        System.out.println(requestedEmployee.getEmpID());
-        db.deleteEmployee(requestedEmployee.getEmpID());
+
+    @DeleteMapping("/api/employee/delete") //API delete Employee: prend un id en parametre pour supprimer un employe dans la db
+    public ResponseEntity deleteClient(@RequestParam(name = "id") int id) {
+        db.deleteEmployee(id);
         return ResponseEntity.ok("DELETE");
-    }*/
+    }
 }
