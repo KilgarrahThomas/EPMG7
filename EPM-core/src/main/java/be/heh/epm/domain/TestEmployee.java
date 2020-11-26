@@ -1,8 +1,11 @@
 package be.heh.epm.domain;
 
-import be.heh.epm.application.classification.*;
+import be.heh.epm.application.*;
+import be.heh.epm.application.classification.HourlyClassification;
+import be.heh.epm.application.classification.PaymentClassification;
+import be.heh.epm.application.classification.SalariedClassification;
+import be.heh.epm.application.classification.TimeCard;
 import be.heh.epm.application.employee.Employee;
-import be.heh.epm.application.payDay.PayCheck;
 import be.heh.epm.application.payMethod.DirectDepositMethod;
 import be.heh.epm.application.payMethod.MailMethod;
 import be.heh.epm.application.payMethod.PaymentMethod;
@@ -20,13 +23,13 @@ import static org.junit.Assert.*;
 public class TestEmployee {
 
     private Employee employee;
-    private PayCheck pc;
+    private be.heh.epm.application.payDay.PayCheck pc;
 
     @Before
     public void setUp() throws Exception {
         employee = new Employee(100, "toto", "av maistriau", "toto@gmail.com");
         LocalDate payDate = LocalDate.of(2020, 10, 30);
-        pc = new PayCheck(payDate);
+        pc = new be.heh.epm.application.payDay.PayCheck(payDate);
     }
 
     @Test
@@ -68,35 +71,6 @@ public class TestEmployee {
         double pay = pc.getSalary();
 
         assertEquals(380.0, pay, 0.01);
-
-        PaymentSchedule ps = employee.getPaySchedule();
-        assertTrue(ps instanceof WeeklyPaymentSchedule);
-
-        PaymentMethod pm = employee.getPayMethod();
-        assertEquals("mail : toto@gmail.com", pm.toString());
-
-    }
-
-    @Test
-    public void createCommissionnedEmployee() {
-
-        employee.setPayClassification(new CommissionClassification(20.0, 20));
-        employee.setPayMethod(new MailMethod(employee.getMail()));
-        employee.setPaySchedule(new WeeklyPaymentSchedule());
-
-        LocalDate date = LocalDate.of(2020, 10, 29);
-        LocalDate nextDate = LocalDate.of(2020, 10, 30);
-        LocalDate dateOutside = LocalDate.of(2020, 9, 2);
-
-        PaymentClassification classification = employee.getPayClassification();
-        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(date, 100));
-        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(nextDate, 200));
-        ((CommissionClassification) classification).addSaleReceipt(new SaleReceipt(dateOutside, 300));
-
-        employee.payDay(pc);
-        double pay = pc.getSalary();
-
-        assertEquals(80.0, pay, 0.01);
 
         PaymentSchedule ps = employee.getPaySchedule();
         assertTrue(ps instanceof WeeklyPaymentSchedule);
@@ -210,11 +184,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 10, 23);
         LocalDate Start = LocalDate.of(2020, 10, 12);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 
@@ -226,11 +200,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 10, 9);
         LocalDate Start = LocalDate.of(2020, 9, 28);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 
@@ -242,11 +216,11 @@ public class TestEmployee {
 
         LocalDate SecondFriday = LocalDate.of(2020, 8, 14);
         LocalDate Start = LocalDate.of(2020, 7, 27);
-        PayCheck pc2 = new PayCheck(SecondFriday);
+        be.heh.epm.application.payDay.PayCheck pc2 = new be.heh.epm.application.payDay.PayCheck(SecondFriday);
 
         employee.payDay(pc2);
 
-        assertTrue(pc2.getPayPayPeriodStart().equals(Start));
+        assertEquals(pc2.getPayPayPeriodStart(), Start);
 
     }
 }

@@ -26,13 +26,22 @@ public class Employee {
         this.mail = mail;
     }
 
-    // GETTERS & SETTERS
-    public int getEmpID() {
-        return EmpID;
+    //Constructeur utiliser par la DB
+    public Employee(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+    public Employee() {
     }
 
+    // GETTERS & SETTERS
+    public void setEmpId(int idemp) { this.EmpID = idemp; }
+
+    public int getEmpID() {
+        return this.EmpID;
+    }
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -40,7 +49,7 @@ public class Employee {
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
@@ -54,7 +63,6 @@ public class Employee {
     public void setPayMethod(PaymentMethod transaction) {
         this.transaction = transaction;
     }
-
     public PaymentSchedule getPaySchedule() {
         return payDay;
     }
@@ -72,7 +80,7 @@ public class Employee {
     }
 
     public String getMail() {
-        return mail;
+        return this.mail;
     }
 
     public void setMail(String mail) {
@@ -92,4 +100,5 @@ public class Employee {
     public boolean isDatePay(LocalDate date) {
         return payDay.IsDatePay(date);
     } // Retourne true si l'employé doit être payé à la date définie
+
 }
